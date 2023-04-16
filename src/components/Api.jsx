@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 const API = "https://jsonplaceholder.typicode.com/users";
-const ApiPlayers = "https://soccer-backend.onrender.com/api/jugadores/kevin";
+const ApiPlayers = "https://backend-soccer.onrender.com/api/jugadores/irving";
 
 const Api = () => {
   const [data, setData] = useState([]);

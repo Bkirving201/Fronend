@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
-const API_URL = "https://soccer-backend.onrender.com/api/jugadores/kevin";
+import { Redirect } from 'react-router-dom';
+import './App.css'
+const API_URL = "https://backend-soccer.onrender.com/api/jugadores/irving";
+
 
 const formularioInicio = {
   playerName: "",
   playerPosition: "",
   playerImgProfile: "",
+  playerSize: "",
+  playerWight: "",
+  playerTeamActual: "",
+  playerNationality: "",
 };
+
+
 
 const Formulario = () => {
   const [formulario, setFormulario] = useState(formularioInicio);
@@ -34,42 +43,188 @@ const Formulario = () => {
     }
   };
 
+  const handleClick = () => {
+    window.location.href = '/';
+  }
+
+  
+  
+
   return (
     <>
-      <h1>Formulario para enviar jugadores a la BD</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Nombre del jugador:
-          <input
-            type="text"
-            name="playerName"
-            value={formulario.playerName}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Posición del jugador:
-          <input
-            type="text"
-            name="playerPosition"
-            value={formulario.playerPosition}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Imagen del jugador:
-          <input
-            type="text"
-            name="playerImgProfile"
-            value={formulario.playerImgProfile}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Enviar</button>
-      </form>
+       <h1 className="Titulo">Formulario para enviar jugadores a la BD</h1>
+      
+
+        <form onSubmit={handleSubmit}>
+
+
+            <div className="row">
+
+                <div class="col">
+
+                
+                  <label className="Label">
+                    Nombre del jugador:
+                  </label>
+                  
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="playerName"
+                    value={formulario.playerName}
+                    onChange={handleChange}
+                  />
+
+                </div>
+
+                <br/>
+
+                <div class="col">
+
+                
+                  <label className="Label">
+                    Posición del jugador:
+                  </label>
+
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="playerPosition"
+                    value={formulario.playerPosition}
+                    onChange={handleChange}
+                  />
+
+                </div>
+
+                <br/>
+
+                <div class="col">
+
+                
+                  <label className="Label">
+                    Imagen del jugador:
+                  </label>
+
+                  
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="playerImgProfile"
+                    value={formulario.playerImgProfile}
+                    onChange={handleChange}
+                  />
+
+                </div>
+
+                                            
+            </div>
+        
+
+          <div className="row">
+
+            <div class="col">
+
+
+              <label className="Label">
+                Peso del jugador:
+              </label>
+              
+              <input
+                class="form-control"
+                type="text"
+                name="playerSize"
+                value={formulario.playerSize}
+                onChange={handleChange}
+              />
+
+            </div>
+
+            <br/>
+
+            <div class="col">
+
+
+              <label className="Label">
+                Altura del jugador:
+              </label>
+
+              <input
+                class="form-control"
+                type="text"
+                name="playerWight"
+                value={formulario.playerWight}
+                onChange={handleChange}
+              />
+
+            </div>
+
+            <br/>
+
+            <div class="col">
+
+
+              <label className="Label">
+                Equipo actual del jugador:
+              </label>
+
+              
+              <input
+                class="form-control"
+                type="text"
+                name="playerTeamActual"
+                value={formulario.playerTeamActual}
+                onChange={handleChange}
+              />
+
+            </div>
+
+            <div class="col">
+
+
+              <label className="Label">
+                Nacionalidad:
+              </label>
+              
+              <input
+                class="form-control"
+                type="text"
+                name="playerNationality"
+                value={formulario.playerNationality}
+                onChange={handleChange}
+              />
+
+            
+            </div>
+
+            <div className="col">
+               <br/>
+              
+              <button onClick={handleClick}
+
+                  type="submit"
+                  class="btn btn-primary">
+
+                  Enviar
+
+                </button> 
+
+            </div>
+
+
+                  
+
+            
+      
+
+          </div>
+          
+                          
+             
+                
+         
+
+          
+        </form>
     </>
   );
 };

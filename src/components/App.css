@@ -1,0 +1,11 @@
+
+.Titulo{
+    text-align: center;
+}
+
+.row{
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+

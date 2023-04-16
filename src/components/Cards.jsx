@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-const ApiPlayers = "https://soccer-backend.onrender.com/api/jugadores/kevin";
+import './App.css'
+const ApiPlayers = "https://backend-soccer.onrender.com/api/jugadores/irving";
 
 const Cards = () => {
   const [players, setPlayers] = useState([]);
@@ -28,7 +29,11 @@ const Cards = () => {
       ) : (
         players.map((player) => {
           return (
+
+            
             <div key={player._id} className="card" style={{ width: "18rem" }}>
+
+              <br/>
               <img
                 src={player.playerImgProfile}
                 className="card-img-top"
@@ -37,15 +42,30 @@ const Cards = () => {
                   width: "100%",
                   height: "300px",
                   objectFit: "cover",
+                  
                 }}
               />
-              <div className="card-body">
+              
+              <div classname="card-body" style={{width: '18rem'}}>
+
                 <h5 className="card-title">{player.playerName}</h5>
-                <p className="card-text">{player.position}</p>
-                <a href="/" className="btn btn-primary">
-                  Go somewhere
-                </a>
+
+                <div className="card" style={{width: '16rem'}}>
+
+                    <ul className="list-group list-group-flush">
+
+                      <li className="list-group-item">{player.playerPosition}</li>
+                      <li className="list-group-item">{player.playerSize}</li>
+                      <li className="list-group-item">{player.playerWight}</li>
+                      <li className="list-group-item">{player.playerTeamActual}</li>
+                      <li className="list-group-item">{player.playerNationality}</li>
+
+                    </ul>
+                    
+                </div> 
               </div>
+
+              <br/>
             </div>
           );
         })
