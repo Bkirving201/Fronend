@@ -1,6 +1,14 @@
 
 .Titulo{
     text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.TituloForm{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 15px;
 }
 
 .row{
@@ -9,3 +17,57 @@
     align-items: center;
 }
 
+.card-title{
+
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.card{
+    text-align: center;
+    margin-left: 4px;
+    margin-bottom: 20px;
+}
+
+.container-row{
+    border: 2px solid red
+}
+
+.btn-danger{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.container{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    
+    margin-left: 50px;
+}
+
+.div {
+    display: flex !important; 
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+.alert{
+
+    display: flex;
+    margin: 0;
+
+}
+
+.btn{
+    margin-left: 10px;
+    align-items: center;
+}
+    
+    

@@ -22,54 +22,65 @@ const Cards = () => {
   }, []);
 
   return (
-    <div className="container row">
-      <h1>Jugadores TOP</h1>
+
+    <div className="div">
+
+      <div className="container row">
+
+      <h1 className="Titulo">Jugadores TOP</h1>
+      <br/>
       {isLoading ? (
         <h1>Cargando...</h1>
       ) : (
         players.map((player) => {
           return (
 
-            
             <div key={player._id} className="card" style={{ width: "18rem" }}>
 
-              <br/>
-              <img
-                src={player.playerImgProfile}
-                className="card-img-top"
-                alt={player.playerName}
-                style={{
-                  width: "100%",
-                  height: "300px",
-                  objectFit: "cover",
-                  
-                }}
-              />
               
-              <div classname="card-body" style={{width: '18rem'}}>
+                    <br/>
+                    <img
+                    src={player.playerImgProfile}
+                    className="card-img-top"
+                    alt={player.playerName}
+                    style={{
+                      width: "100%",
+                      height: "300px",
+                      objectFit: "cover",
+                      
+                    }}
+                    />
 
-                <h5 className="card-title">{player.playerName}</h5>
+                    <div classname="card-body" style={{width: '18rem'}}>
 
-                <div className="card" style={{width: '16rem'}}>
+                      <h5 className="card-title">{player.playerName}</h5>
 
-                    <ul className="list-group list-group-flush">
+                      <div className="card" style={{width: '16rem'}}>
 
-                      <li className="list-group-item">{player.playerPosition}</li>
-                      <li className="list-group-item">{player.playerSize}</li>
-                      <li className="list-group-item">{player.playerWight}</li>
-                      <li className="list-group-item">{player.playerTeamActual}</li>
-                      <li className="list-group-item">{player.playerNationality}</li>
+                          <ul className="list-group list-group-flush">
 
-                    </ul>
+                            <li className="list-group-item">{player.playerPosition}</li>
+                            <li className="list-group-item">{player.playerSize}</li>
+                            <li className="list-group-item">{player.playerWight}</li>
+                            <li className="list-group-item">{player.playerTeamActual}</li>
+                            <li className="list-group-item">{player.playerNationality}</li>
+
+                          </ul>
+                          
+                      </div>
+
+                    </div>
+
                     
-                </div> 
-              </div>
-
-              <br/>
             </div>
+            
           );
         })
       )}
+
+      </div>
+
+     
     </div>
   );
 };

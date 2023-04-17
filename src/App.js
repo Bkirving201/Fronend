@@ -1,7 +1,9 @@
 import React from "react";
 import Cards from "./components/Cards";
 import Formulario from "./components/Formulario";
+import Eliminar from './components/Eliminar';
 import MenuBar from "./components/MenuBar";
+import './components/App.css';
 import { BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 
 
@@ -13,22 +15,24 @@ const App = () => {
   return (
     <>
 
-    <Router>
+       
+    <Router> 
 
       <MenuBar />
 
-      <Routes>
+        <Routes>
 
-        <Route path="/Formulario.jsx" exact Component={Formulario}/>
-        <Route path="/" exact Component={Cards}/>
-
-      </Routes>
-       
-    </Router>
-      
+          <Route path="/Formulario.jsx" exact Component={Formulario}/>          
+          <Route path="/" exact Component={Cards}/>
+          <Route path="/Eliminar.jsx" exact Component={Eliminar}/>
+          
+        </Routes>
+        
+    </Router>   
       
     </>
   );
 };
+
 
 export default App;

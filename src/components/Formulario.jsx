@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Redirect } from 'react-router-dom';
 import './App.css'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 const API_URL = "https://backend-soccer.onrender.com/api/jugadores/irving";
 
 
@@ -18,7 +19,9 @@ const formularioInicio = {
 
 
 const Formulario = () => {
+
   const [formulario, setFormulario] = useState(formularioInicio);
+
 
   const handleChange = (e) => {
     setFormulario({
@@ -27,32 +30,54 @@ const Formulario = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+
+const handleSubmit = async (e) => {
     e.preventDefault();
+
+
+    if (
+      !formulario.playerName ||
+      !formulario.playerPosition||
+      !formulario.playerImgProfile||
+      !formulario.playerSize||
+      !formulario.playerWight||
+      !formulario.playerTeamActual||
+      !formulario.playerNationality
+      ){
+
+      toast.error('Por favor, rellene todos los campos del formulario.');
+      
+    } else {
+
     try {
-      axios
+      await axios
         .post(API_URL, formulario)
         .then((response) => {
           console.log(response);
         })
-        .catch((error) => {
-          console.log(error);
-        });
+
+        toast(
+          'Datos guardados correctamente',
+          { type: toast.TYPE.SUCCESS, autoClose: 2000 }
+        );
+        
+
     } catch (error) {
-      console.log(error);
+      toast(error.message, { type: toast.TYPE.ERROR, autoClose: 3000 })
     }
-  };
-
-  const handleClick = () => {
-    window.location.href = '/';
   }
+};
 
-  
-  
+const handleReset = async () => {
+  setFormulario({
+    ...formularioInicio
+  })
+};
+    
 
   return (
     <>
-       <h1 className="Titulo">Formulario para enviar jugadores a la BD</h1>
+       <h1 className="TituloForm">Formulario para enviar jugadores a la BD</h1>
       
 
         <form onSubmit={handleSubmit}>
@@ -120,78 +145,78 @@ const Formulario = () => {
             </div>
         
 
-          <div className="row">
+                  <div className="row">
 
-            <div class="col">
-
-
-              <label className="Label">
-                Peso del jugador:
-              </label>
-              
-              <input
-                class="form-control"
-                type="text"
-                name="playerSize"
-                value={formulario.playerSize}
-                onChange={handleChange}
-              />
-
-            </div>
-
-            <br/>
-
-            <div class="col">
+                    <div class="col">
 
 
-              <label className="Label">
-                Altura del jugador:
-              </label>
+                      <label className="Label">
+                        Peso del jugador:
+                      </label>
+                      
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="playerSize"
+                        value={formulario.playerSize}
+                        onChange={handleChange}
+                      />
 
-              <input
-                class="form-control"
-                type="text"
-                name="playerWight"
-                value={formulario.playerWight}
-                onChange={handleChange}
-              />
+                    </div>
 
-            </div>
+                    <br/>
 
-            <br/>
-
-            <div class="col">
-
-
-              <label className="Label">
-                Equipo actual del jugador:
-              </label>
-
-              
-              <input
-                class="form-control"
-                type="text"
-                name="playerTeamActual"
-                value={formulario.playerTeamActual}
-                onChange={handleChange}
-              />
-
-            </div>
-
-            <div class="col">
+                    <div class="col">
 
 
-              <label className="Label">
-                Nacionalidad:
-              </label>
-              
-              <input
-                class="form-control"
-                type="text"
-                name="playerNationality"
-                value={formulario.playerNationality}
-                onChange={handleChange}
-              />
+                      <label className="Label">
+                        Altura del jugador:
+                      </label>
+
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="playerWight"
+                        value={formulario.playerWight}
+                        onChange={handleChange}
+                      />
+
+                    </div>
+
+                    <br/>
+
+                    <div class="col">
+
+
+                      <label className="Label">
+                        Equipo actual del jugador:
+                      </label>
+
+                      
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="playerTeamActual"
+                        value={formulario.playerTeamActual}
+                        onChange={handleChange}
+                      />
+
+                    </div>
+
+                    <div class="col">
+
+
+                      <label className="Label">
+                        Nacionalidad:
+                      </label>
+                      
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="playerNationality"
+                        value={formulario.playerNationality}
+                        onChange={handleChange}
+                      />
 
             
             </div>
@@ -199,32 +224,39 @@ const Formulario = () => {
             <div className="col">
                <br/>
               
-              <button onClick={handleClick}
+
+              <button
 
                   type="submit"
                   class="btn btn-primary">
 
                   Enviar
 
-                </button> 
+              </button> 
+              
 
-            </div>
 
+              <button
 
+                type='button'
+                className="btn btn-secondary"
+                onClick={handleReset}>
                   
+                  Limpiar
+                  
+              </button>
 
-            
-      
+
+
+          
+             </div>
+
 
           </div>
-          
-                          
-             
-                
-         
-
+          <ToastContainer />
           
         </form>
+        
     </>
   );
 };
